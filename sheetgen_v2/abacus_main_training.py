@@ -54,7 +54,8 @@ class generate_sum:
             total_sum += number
         #returning both in a single list
         return [numbers_output, total_sum]        
-if __name__ == "__main__":
+        
+def main():
     try:
         while 1:
             #asking number of digits and amount of numbers
@@ -71,21 +72,26 @@ if __name__ == "__main__":
         #provide the digits to the generator
         generator = generate_sum(ask_digit)
         #generate numbers infnetly
+        count = 0
         while True:
             try:
                 #generate a list of numbers with the amount of numbers provided in the input
                 new_sum = generator.gen(generator.minimum(), generator.maximum(), ask_numbers)
+                count += 1
                 #unpacking the returned list into seperate variables
                 output_numbers = new_sum[0]
                 answer = new_sum[1]
                 #printing the output and waiting for an input before giving the answer
+                input('--sum #{}--'.format(count))
                 for number in output_numbers:
                     print(number)
                 input('--answer--')
                 print(answer)
-                input('--next sum--')
             except KeyboardInterrupt:
                 break
+#                print();main()
     except KeyboardInterrupt:
         print()
-        exit()
+#        main()
+if __name__ == "__main__":
+    main()
